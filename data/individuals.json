@@ -1,0 +1,264 @@
+{
+  "individuals": [
+    {
+      "id": 1,
+      "name": "Dave",
+      "surname": "Brown",
+      "age": 68,
+      "heart_rate": 82,
+      "blood_pressure": {
+        "systolic": 149,
+        "diastolic": 64
+      },
+      "cholesterol": 245,
+      "disease_indicator": 0
+    },
+    {
+      "id": 2,
+      "name": "Jane",
+      "surname": "Davis",
+      "age": 56,
+      "heart_rate": 76,
+      "blood_pressure": {
+        "systolic": 135,
+        "diastolic": 80
+      },
+      "cholesterol": 263,
+      "disease_indicator": 1
+    },
+    {
+      "id": 3,
+      "name": "Heidi",
+      "surname": "Brown",
+      "age": 36,
+      "heart_rate": 74,
+      "blood_pressure": {
+        "systolic": 126,
+        "diastolic": 83
+      },
+      "cholesterol": 177,
+      "disease_indicator": 0
+    },
+    {
+      "id": 4,
+      "name": "Carol",
+      "surname": "Jones",
+      "age": 38,
+      "heart_rate": 82,
+      "blood_pressure": {
+        "systolic": 139,
+        "diastolic": 98
+      },
+      "cholesterol": 156,
+      "disease_indicator": 0
+    },
+    {
+      "id": 5,
+      "name": "John",
+      "surname": "Davis",
+      "age": 44,
+      "heart_rate": 69,
+      "blood_pressure": {
+        "systolic": 119,
+        "diastolic": 94
+      },
+      "cholesterol": 178,
+      "disease_indicator": 0
+    },
+    {
+      "id": 6,
+      "name": "Jane",
+      "surname": "Davis",
+      "age": 30,
+      "heart_rate": 61,
+      "blood_pressure": {
+        "systolic": 127,
+        "diastolic": 67
+      },
+      "cholesterol": 126,
+      "disease_indicator": 0
+    },
+    {
+      "id": 7,
+      "name": "Jane",
+      "surname": "Rodriguez",
+      "age": 39,
+      "heart_rate": 62,
+      "blood_pressure": {
+        "systolic": 99,
+        "diastolic": 82
+      },
+      "cholesterol": 119,
+      "disease_indicator": 1
+    },
+    {
+      "id": 8,
+      "name": "Carol",
+      "surname": "Johnson",
+      "age": 45,
+      "heart_rate": 75,
+      "blood_pressure": {
+        "systolic": 123,
+        "diastolic": 78
+      },
+      "cholesterol": 147,
+      "disease_indicator": 0
+    },
+    {
+      "id": 9,
+      "name": "Bob",
+      "surname": "Garcia",
+      "age": 66,
+      "heart_rate": 70,
+      "blood_pressure": {
+        "systolic": 112,
+        "diastolic": 81
+      },
+      "cholesterol": 205,
+      "disease_indicator": 0
+    },
+    {
+      "id": 10,
+      "name": "Jane",
+      "surname": "Jones",
+      "age": 37,
+      "heart_rate": 75,
+      "blood_pressure": {
+        "systolic": 128,
+        "diastolic": 72
+      },
+      "cholesterol": 231,
+      "disease_indicator": 1
+    },
+    {
+      "id": 11,
+      "name": "Heidi",
+      "surname": "Wilson",
+      "age": 64,
+      "heart_rate": 68,
+      "blood_pressure": {
+        "systolic": 114,
+        "diastolic": 81
+      },
+      "cholesterol": 114,
+      "disease_indicator": 0
+    },
+    {
+      "id": 12,
+      "name": "Grace",
+      "surname": "Davis",
+      "age": 47,
+      "heart_rate": 65,
+      "blood_pressure": {
+        "systolic": 130,
+        "diastolic": 91
+      },
+      "cholesterol": 124,
+      "disease_indicator": 1
+    },
+    {
+      "id": 13,
+      "name": "Grace",
+      "surname": "Williams",
+      "age": 50,
+      "heart_rate": 73,
+      "blood_pressure": {
+        "systolic": 122,
+        "diastolic": 60
+      },
+      "cholesterol": 241,
+      "disease_indicator": 0
+    },
+    {
+      "id": 14,
+      "name": "Alice",
+      "surname": "Smith",
+      "age": 34,
+      "heart_rate": 65,
+      "blood_pressure": {
+        "systolic": 94,
+        "diastolic": 72
+      },
+      "cholesterol": 146,
+      "disease_indicator": 0
+    },
+    {
+      "id": 15,
+      "name": "Heidi",
+      "surname": "Garcia",
+      "age": 44,
+      "heart_rate": 72,
+      "blood_pressure": {
+        "systolic": 111,
+        "diastolic": 97
+      },
+      "cholesterol": 123,
+      "disease_indicator": 0
+    },
+    {
+      "id": 16,
+      "name": "Carol",
+      "surname": "Brown",
+      "age": 58,
+      "heart_rate": 94,
+      "blood_pressure": {
+        "systolic": 113,
+        "diastolic": 61
+      },
+      "cholesterol": 165,
+      "disease_indicator": 1
+    },
+    {
+      "id": 17,
+      "name": "Carol",
+      "surname": "Williams",
+      "age": 57,
+      "heart_rate": 81,
+      "blood_pressure": {
+        "systolic": 140,
+        "diastolic": 93
+      },
+      "cholesterol": 259,
+      "disease_indicator": 0
+    },
+    {
+      "id": 18,
+      "name": "Frank",
+      "surname": "Williams",
+      "age": 65,
+      "heart_rate": 98,
+      "blood_pressure": {
+        "systolic": 149,
+        "diastolic": 69
+      },
+      "cholesterol": 270,
+      "disease_indicator": 0
+    },
+    {
+      "id": 19,
+      "name": "Eve",
+      "surname": "Garcia",
+      "age": 49,
+      "heart_rate": 61,
+      "blood_pressure": {
+        "systolic": 140,
+        "diastolic": 73
+      },
+      "cholesterol": 203,
+      "disease_indicator": 1
+    },
+    {
+      "id": 20,
+      "name": "Dave",
+      "surname": "Smith",
+      "age": 48,
+      "heart_rate": 74,
+      "blood_pressure": {
+        "systolic": 108,
+        "diastolic": 84
+      },
+      "cholesterol": 136,
+      "disease_indicator": 0
+    }
+  ]
+}
