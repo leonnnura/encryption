@@ -176,172 +176,172 @@ async function healthDataAnalysis() {
     console.log(`Disease Prevalence: ${diseasePrevalence}%`);
 
     /*** 5. Compute Variance of Age ***/
-        console.log('\nComputing Variance of Age...');
+        // console.log('\nComputing Variance of Age...');
 
-        // Use the 'ages' array already declared earlier
-        // const ages = individuals.map(ind => ind.age); // Remove this line
-        const varianceCount = ages.length; // Use a different variable name if 'count' is declared earlier
+        // // Use the 'ages' array already declared earlier
+        // // const ages = individuals.map(ind => ind.age); // Remove this line
+        // const varianceCount = ages.length; // Use a different variable name if 'count' is declared earlier
 
-        // Encrypt and sum the squared differences
-        let encryptedVarianceSum = null;
-        for (let i = 0; i < varianceCount; i++) {
-        const age = ages[i];
+        // // Encrypt and sum the squared differences
+        // let encryptedVarianceSum = null;
+        // for (let i = 0; i < varianceCount; i++) {
+        // const age = ages[i];
 
-        // Encode and encrypt the age
-        const plainAge = encoder.encode(Float64Array.from([age]), scale);
-        const encryptedAge = encryptor.encrypt(plainAge);
+        // // Encode and encrypt the age
+        // const plainAge = encoder.encode(Float64Array.from([age]), scale);
+        // const encryptedAge = encryptor.encrypt(plainAge);
 
-        // Encode the mean age
-        const meanAgePlain = encoder.encode(Float64Array.from([averageAge]), scale);
+        // // Encode the mean age
+        // const meanAgePlain = encoder.encode(Float64Array.from([averageAge]), scale);
 
-        // Subtract mean age from encrypted age
-        const diff = evaluator.subPlain(encryptedAge, meanAgePlain);
+        // // Subtract mean age from encrypted age
+        // const diff = evaluator.subPlain(encryptedAge, meanAgePlain);
 
-        // Square the difference
-        let squaredDiff = evaluator.multiply(diff, diff);
+        // // Square the difference
+        // let squaredDiff = evaluator.multiply(diff, diff);
 
-        // Rescale after multiplication
-        squaredDiff = evaluator.rescaleToNext(squaredDiff);
-        squaredDiff.setScale(Math.sqrt(squaredDiff.scale));
+        // // Rescale after multiplication
+        // squaredDiff = evaluator.rescaleToNext(squaredDiff);
+        // squaredDiff.setScale(Math.sqrt(squaredDiff.scale));
 
-        if (encryptedVarianceSum === null) {
-            encryptedVarianceSum = squaredDiff;
-        } else {
-            // Ensure scales and modulus levels match before addition
-            encryptedVarianceSum = evaluator.add(encryptedVarianceSum, squaredDiff);
-        }
-        }
-        console.log('Encrypted sum of squared differences computed.');
+        // if (encryptedVarianceSum === null) {
+        //     encryptedVarianceSum = squaredDiff;
+        // } else {
+        //     // Ensure scales and modulus levels match before addition
+        //     encryptedVarianceSum = evaluator.add(encryptedVarianceSum, squaredDiff);
+        // }
+        // }
+        // console.log('Encrypted sum of squared differences computed.');
 
-        // Re-encode inverse count at the new scale after rescaling
-        const varianceScale = encryptedVarianceSum.scale;
-        const plainInverseVarianceCount = encoder.encode(
-        Float64Array.from([1 / varianceCount]),
-        varianceScale
-        );
+        // // Re-encode inverse count at the new scale after rescaling
+        // const varianceScale = encryptedVarianceSum.scale;
+        // const plainInverseVarianceCount = encoder.encode(
+        // Float64Array.from([1 / varianceCount]),
+        // varianceScale
+        // );
 
-        // Multiply by inverse count
-        let encryptedVariance = evaluator.multiplyPlain(
-        encryptedVarianceSum,
-        plainInverseVarianceCount
-        );
+        // // Multiply by inverse count
+        // let encryptedVariance = evaluator.multiplyPlain(
+        // encryptedVarianceSum,
+        // plainInverseVarianceCount
+        // );
 
-        // Rescale after multiplication
-        encryptedVariance = evaluator.rescaleToNext(encryptedVariance);
-        encryptedVariance.setScale(Math.sqrt(encryptedVariance.scale));
+        // // Rescale after multiplication
+        // encryptedVariance = evaluator.rescaleToNext(encryptedVariance);
+        // encryptedVariance.setScale(Math.sqrt(encryptedVariance.scale));
 
-        // Decrypt and decode the result
-        const decryptedVarianceResult = decryptor.decrypt(encryptedVariance);
-        const decodedVarianceResult = encoder.decode(decryptedVarianceResult);
-        const variance = decodedVarianceResult[0];
+        // // Decrypt and decode the result
+        // const decryptedVarianceResult = decryptor.decrypt(encryptedVariance);
+        // const decodedVarianceResult = encoder.decode(decryptedVarianceResult);
+        // const variance = decodedVarianceResult[0];
 
-        console.log(`Variance of Age: ${variance}`);
+        // console.log(`Variance of Age: ${variance}`);
 
 
     /*** 6. Compute Average Risk Score ***/
-    console.log('\nComputing Average Risk Score...');
-    const ageWeight = 0.3;
-    const cholesterolWeight = 0.4;
-    const bpWeight = 0.3;
+    // console.log('\nComputing Average Risk Score...');
+    // const ageWeight = 0.3;
+    // const cholesterolWeight = 0.4;
+    // const bpWeight = 0.3;
 
-    const plainAgeWeight = encoder.encode(Float64Array.from([ageWeight]), scale);
-    const plainCholesterolWeight = encoder.encode(Float64Array.from([cholesterolWeight]), scale);
-    const plainBpWeight = encoder.encode(Float64Array.from([bpWeight]), scale);
+    // const plainAgeWeight = encoder.encode(Float64Array.from([ageWeight]), scale);
+    // const plainCholesterolWeight = encoder.encode(Float64Array.from([cholesterolWeight]), scale);
+    // const plainBpWeight = encoder.encode(Float64Array.from([bpWeight]), scale);
 
-    let encryptedRiskScoreSum = null;
-    for (let i = 0; i < individuals.length; i++) {
-      const individual = individuals[i];
+    // let encryptedRiskScoreSum = null;
+    // for (let i = 0; i < individuals.length; i++) {
+    //   const individual = individuals[i];
 
-      // Encode and encrypt individual factors
-      const plainAge = encoder.encode(Float64Array.from([individual.age]), scale);
-      const encryptedAge = encryptor.encrypt(plainAge);
+    //   // Encode and encrypt individual factors
+    //   const plainAge = encoder.encode(Float64Array.from([individual.age]), scale);
+    //   const encryptedAge = encryptor.encrypt(plainAge);
 
-      const plainCholesterol = encoder.encode(Float64Array.from([individual.cholesterol]), scale);
-      const encryptedCholesterol = encryptor.encrypt(plainCholesterol);
+    //   const plainCholesterol = encoder.encode(Float64Array.from([individual.cholesterol]), scale);
+    //   const encryptedCholesterol = encryptor.encrypt(plainCholesterol);
 
-      const systolicBp = individual.blood_pressure.systolic;
-      const plainBp = encoder.encode(Float64Array.from([systolicBp]), scale);
-      const encryptedBp = encryptor.encrypt(plainBp);
+    //   const systolicBp = individual.blood_pressure.systolic;
+    //   const plainBp = encoder.encode(Float64Array.from([systolicBp]), scale);
+    //   const encryptedBp = encryptor.encrypt(plainBp);
 
-      // Multiply factors by weights
-      const weightedAge = evaluator.multiplyPlain(encryptedAge, plainAgeWeight);
-      const weightedCholesterol = evaluator.multiplyPlain(encryptedCholesterol, plainCholesterolWeight);
-      const weightedBp = evaluator.multiplyPlain(encryptedBp, plainBpWeight);
+    //   // Multiply factors by weights
+    //   const weightedAge = evaluator.multiplyPlain(encryptedAge, plainAgeWeight);
+    //   const weightedCholesterol = evaluator.multiplyPlain(encryptedCholesterol, plainCholesterolWeight);
+    //   const weightedBp = evaluator.multiplyPlain(encryptedBp, plainBpWeight);
 
-      // Rescale
-      const rescaledAge = evaluator.rescaleToNext(weightedAge);
-      rescaledAge.setScale(scale);
+    //   // Rescale
+    //   const rescaledAge = evaluator.rescaleToNext(weightedAge);
+    //   rescaledAge.setScale(scale);
 
-      const rescaledCholesterol = evaluator.rescaleToNext(weightedCholesterol);
-      rescaledCholesterol.setScale(scale);
+    //   const rescaledCholesterol = evaluator.rescaleToNext(weightedCholesterol);
+    //   rescaledCholesterol.setScale(scale);
 
-      const rescaledBp = evaluator.rescaleToNext(weightedBp);
-      rescaledBp.setScale(scale);
+    //   const rescaledBp = evaluator.rescaleToNext(weightedBp);
+    //   rescaledBp.setScale(scale);
 
-      // Sum weighted factors
-      let encryptedRiskScore = evaluator.add(rescaledAge, rescaledCholesterol);
-      encryptedRiskScore = evaluator.add(encryptedRiskScore, rescaledBp);
+    //   // Sum weighted factors
+    //   let encryptedRiskScore = evaluator.add(rescaledAge, rescaledCholesterol);
+    //   encryptedRiskScore = evaluator.add(encryptedRiskScore, rescaledBp);
 
-      // Sum up all risk scores
-      if (encryptedRiskScoreSum === null) {
-        encryptedRiskScoreSum = encryptedRiskScore;
-      } else {
-        encryptedRiskScoreSum = evaluator.add(encryptedRiskScoreSum, encryptedRiskScore);
-      }
-    }
-    console.log('Encrypted sum of risk scores computed.');
+    //   // Sum up all risk scores
+    //   if (encryptedRiskScoreSum === null) {
+    //     encryptedRiskScoreSum = encryptedRiskScore;
+    //   } else {
+    //     encryptedRiskScoreSum = evaluator.add(encryptedRiskScoreSum, encryptedRiskScore);
+    //   }
+    // }
+    // console.log('Encrypted sum of risk scores computed.');
 
-    let encryptedAverageRiskScore = evaluator.multiplyPlain(encryptedRiskScoreSum, plainInverseCount);
-    encryptedAverageRiskScore = evaluator.rescaleToNext(encryptedAverageRiskScore);
-    encryptedAverageRiskScore.setScale(scale);
+    // let encryptedAverageRiskScore = evaluator.multiplyPlain(encryptedRiskScoreSum, plainInverseCount);
+    // encryptedAverageRiskScore = evaluator.rescaleToNext(encryptedAverageRiskScore);
+    // encryptedAverageRiskScore.setScale(scale);
 
-    const decryptedRiskScoreResult = decryptor.decrypt(encryptedAverageRiskScore);
-    const decodedRiskScoreResult = encoder.decode(decryptedRiskScoreResult);
-    const averageRiskScore = decodedRiskScoreResult[0];
+    // const decryptedRiskScoreResult = decryptor.decrypt(encryptedAverageRiskScore);
+    // const decodedRiskScoreResult = encoder.decode(decryptedRiskScoreResult);
+    // const averageRiskScore = decodedRiskScoreResult[0];
 
-    console.log(`Average Risk Score: ${averageRiskScore}`);
+    // console.log(`Average Risk Score: ${averageRiskScore}`);
 
-    /*** 7. Compute Covariance between Age and Cholesterol ***/
-    console.log('\nComputing Covariance between Age and Cholesterol...');
-    const meanCholesterolPlain = encoder.encode(Float64Array.from([averageCholesterol]), scale);
+    // /*** 7. Compute Covariance between Age and Cholesterol ***/
+    // console.log('\nComputing Covariance between Age and Cholesterol...');
+    // const meanCholesterolPlain = encoder.encode(Float64Array.from([averageCholesterol]), scale);
 
-    let encryptedCovarianceSum = null;
-    for (let i = 0; i < individuals.length; i++) {
-      const age = individuals[i].age;
-      const cholesterol = individuals[i].cholesterol;
+    // let encryptedCovarianceSum = null;
+    // for (let i = 0; i < individuals.length; i++) {
+    //   const age = individuals[i].age;
+    //   const cholesterol = individuals[i].cholesterol;
 
-      const plainAge = encoder.encode(Float64Array.from([age]), scale);
-      const encryptedAge = encryptor.encrypt(plainAge);
+    //   const plainAge = encoder.encode(Float64Array.from([age]), scale);
+    //   const encryptedAge = encryptor.encrypt(plainAge);
 
-      const plainCholesterol = encoder.encode(Float64Array.from([cholesterol]), scale);
-      const encryptedCholesterol = encryptor.encrypt(plainCholesterol);
+    //   const plainCholesterol = encoder.encode(Float64Array.from([cholesterol]), scale);
+    //   const encryptedCholesterol = encryptor.encrypt(plainCholesterol);
 
-      // Compute differences using subPlain
-      const diffAge = evaluator.subPlain(encryptedAge, meanAgePlain);
-      const diffCholesterol = evaluator.subPlain(encryptedCholesterol, meanCholesterolPlain);
+    //   // Compute differences using subPlain
+    //   const diffAge = evaluator.subPlain(encryptedAge, meanAgePlain);
+    //   const diffCholesterol = evaluator.subPlain(encryptedCholesterol, meanCholesterolPlain);
 
-      // Multiply differences
-      let productDiff = evaluator.multiply(diffAge, diffCholesterol);
-      productDiff = evaluator.rescaleToNext(productDiff);
-      productDiff.setScale(scale);
+    //   // Multiply differences
+    //   let productDiff = evaluator.multiply(diffAge, diffCholesterol);
+    //   productDiff = evaluator.rescaleToNext(productDiff);
+    //   productDiff.setScale(scale);
 
-      if (encryptedCovarianceSum === null) {
-        encryptedCovarianceSum = productDiff;
-      } else {
-        encryptedCovarianceSum = evaluator.add(encryptedCovarianceSum, productDiff);
-      }
-    }
-    console.log('Encrypted sum of products of differences computed.');
+    //   if (encryptedCovarianceSum === null) {
+    //     encryptedCovarianceSum = productDiff;
+    //   } else {
+    //     encryptedCovarianceSum = evaluator.add(encryptedCovarianceSum, productDiff);
+    //   }
+    // }
+    // console.log('Encrypted sum of products of differences computed.');
 
-    let encryptedCovariance = evaluator.multiplyPlain(encryptedCovarianceSum, plainInverseCount);
-    encryptedCovariance = evaluator.rescaleToNext(encryptedCovariance);
-    encryptedCovariance.setScale(scale);
+    // let encryptedCovariance = evaluator.multiplyPlain(encryptedCovarianceSum, plainInverseCount);
+    // encryptedCovariance = evaluator.rescaleToNext(encryptedCovariance);
+    // encryptedCovariance.setScale(scale);
 
-    const decryptedCovarianceResult = decryptor.decrypt(encryptedCovariance);
-    const decodedCovarianceResult = encoder.decode(decryptedCovarianceResult);
-    const covariance = decodedCovarianceResult[0];
+    // const decryptedCovarianceResult = decryptor.decrypt(encryptedCovariance);
+    // const decodedCovarianceResult = encoder.decode(decryptedCovarianceResult);
+    // const covariance = decodedCovarianceResult[0];
 
-    console.log(`Covariance between Age and Cholesterol: ${covariance}`);
+    // console.log(`Covariance between Age and Cholesterol: ${covariance}`);
 
   } catch (error) {
     console.error('An error occurred:', error.message);
