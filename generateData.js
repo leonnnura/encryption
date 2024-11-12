@@ -37,4 +37,4 @@ function generateRandomIndividuals(count) {
   console.log(`Generated data for ${count} individuals.`);
 }
 
-generateRandomIndividuals(20);
+generateRandomIndividuals(50);
